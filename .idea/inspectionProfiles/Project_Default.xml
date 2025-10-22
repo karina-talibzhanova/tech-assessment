@@ -6,15 +6,27 @@
       <option name="ignoredModules">
         <list>
           <option value="techassessment" />
+          <option value="techassessment" />
+          <option value="techassessment" />
+          <option value="techassessment" />
+          <option value="techassessment" />
         </list>
       </option>
       <option name="ignoredPackages">
         <list>
           <option value="ch.qos.logback:logback-core:1.5.18" />
+          <option value="io.github.classgraph:classgraph:4.8.83" />
+          <option value="io.springfox:springfox-swagger2:3.0.0" />
+          <option value="io.springfox:springfox-swagger-ui:3.0.0" />
+          <option value="org.apache.commons:commons-lang3:3.17.0" />
         </list>
       </option>
       <option name="ignoredReasons">
         <list>
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
           <option value="Not exploitable" />
         </list>
       </option>

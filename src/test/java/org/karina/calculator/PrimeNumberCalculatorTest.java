@@ -1,9 +1,9 @@
-package org.karina.calculator.impl;
+package org.karina.calculator;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.karina.calculator.PrimeNumberCalculator;
+import org.karina.calculator.impl.SieveOfEratosthenes;
 
 import java.util.List;
 import java.util.stream.Stream;

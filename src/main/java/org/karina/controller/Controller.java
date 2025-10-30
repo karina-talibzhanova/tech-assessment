@@ -1,5 +1,6 @@
 package org.karina.controller;
 
+import org.karina.factory.PrimeNumberCalculatorType;
 import org.karina.model.Response;
 import org.karina.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class Controller {
     private CalculatorService calculatorService;
 
     @GetMapping(path = "/calculate", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Response> getPrimes(@RequestParam Integer n, @RequestParam(required = false) String algorithm) {
+    public ResponseEntity<Response> getPrimes(@RequestParam Integer n, @RequestParam(required = false) PrimeNumberCalculatorType algorithm) {
         Response response = calculatorService.getResponse(n);
         return ResponseEntity.ok(response);
     }

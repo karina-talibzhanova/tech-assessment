@@ -19,7 +19,7 @@ public class CalculatorFactoryTest {
 
     @Test
     void getEratosthenesCalculator() {
-        PrimeNumberCalculator calculator = calculatorFactory.getCalculator("ERATOSTHENES");
+        PrimeNumberCalculator calculator = calculatorFactory.getCalculator(PrimeNumberCalculatorType.ERATOSTHENES);
         Assertions.assertInstanceOf(SieveOfEratosthenes.class, calculator);
     }
 }

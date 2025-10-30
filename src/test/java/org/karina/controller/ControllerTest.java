@@ -73,11 +73,11 @@ public class ControllerTest {
 
     @Test
     void getErrorResponseWhenGivenNumberLessThan2() throws Exception {
-        when(calculatorService.getResponse(anyInt(), any(PrimeNumberCalculatorType.class))).thenThrow(new IllegalArgumentException("Number must be greater than 1"));
+        when(calculatorService.getResponse(anyInt(), any(PrimeNumberCalculatorType.class))).thenThrow(new IllegalArgumentException("n must be greater than 1"));
 
         mockMvc.perform(get("/api/calculate?n={n}", 1))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").value("Number must be greater than 1"))
+                .andExpect(jsonPath("$.message").value("n must be greater than 1"))
                 .andDo(print());
 
     }

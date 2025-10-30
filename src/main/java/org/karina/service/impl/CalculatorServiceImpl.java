@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static org.karina.factory.PrimeNumberCalculatorType.ERATOSTHENES;
-
 @Service
 public class CalculatorServiceImpl implements CalculatorService {
     @Autowired
@@ -18,6 +16,9 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     @Override
     public Response getResponse(Integer n, PrimeNumberCalculatorType algorithm) {
+        if (n == null || n < 2) {
+            throw new IllegalArgumentException("n must be greater than 1");
+        }
         List<Integer> primeList = calculatorFactory.getCalculator(algorithm).calculate(n);
         return Response.builder()
                 .n(n)

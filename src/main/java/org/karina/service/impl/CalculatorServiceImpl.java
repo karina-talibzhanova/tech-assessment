@@ -17,16 +17,11 @@ public class CalculatorServiceImpl implements CalculatorService {
     private CalculatorFactory calculatorFactory;
 
     @Override
-    public Response getResponse(Integer n) {
-        return getResponse(n, ERATOSTHENES);
-    }
-
-    @Override
     public Response getResponse(Integer n, PrimeNumberCalculatorType algorithm) {
         List<Integer> primeList = calculatorFactory.getCalculator(algorithm).calculate(n);
         return Response.builder()
                 .n(n)
-                .primeNumberList(primeList)
+                .primeNumberList(primeList.toString())
                 .algorithm(algorithm.toString())
                 .build();
     }

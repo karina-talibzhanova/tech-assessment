@@ -11,6 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 public class Response {
     private Integer n;
-    private List<Integer> primeNumberList;
+    private String primeNumberList;
     private String algorithm;
 }

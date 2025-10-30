@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api")
 public class Controller {
@@ -18,8 +20,8 @@ public class Controller {
     private CalculatorService calculatorService;
 
     @GetMapping(path = "/calculate", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Response> getPrimes(@RequestParam Integer n, @RequestParam(required = false) PrimeNumberCalculatorType algorithm) {
-        Response response = calculatorService.getResponse(n);
+    public ResponseEntity<Response> getPrimes(@RequestParam Integer n, @RequestParam Optional<PrimeNumberCalculatorType> algorithm) {
+        Response response = calculatorService.getResponse(n, algorithm.orElse(PrimeNumberCalculatorType.ERATOSTHENES));
         return ResponseEntity.ok(response);
     }
 }

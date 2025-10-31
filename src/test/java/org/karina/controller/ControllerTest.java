@@ -12,6 +12,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -84,11 +85,14 @@ public class ControllerTest {
 
     @Test
     void getErrorResponseWhenGivenNonValidAlgorithm() throws Exception {
-        when(calculatorService.getResponse(anyInt(), any(PrimeNumberCalculatorType.class))).thenThrow(new IllegalArgumentException("Invalid algorithm"));
+        List<String> validAlgorithms = new ArrayList<>();
+        for (PrimeNumberCalculatorType type : PrimeNumberCalculatorType.values()) {
+            validAlgorithms.add(type.toString());
+        }
 
         mockMvc.perform(get("/api/calculate?n={n}&algorithm={algorithm}", n, "INVALID"))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").value("Invalid algorithm"))
+                .andExpect(jsonPath("$.message").value("Invalid algorithm. Please choose one of the following: " + validAlgorithms))
                 .andDo(print());
 
     }

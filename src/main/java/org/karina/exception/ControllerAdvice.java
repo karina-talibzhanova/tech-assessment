@@ -36,12 +36,21 @@ public class ControllerAdvice {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     @ResponseBody
     public ResponseEntity<ErrorResponse> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
-        List<String> validAlgorithms = new ArrayList<>();
-        for (PrimeNumberCalculatorType type : PrimeNumberCalculatorType.values()) {
-            validAlgorithms.add(type.toString());
-        }
-        ErrorResponse errorResponse = ErrorResponse.builder().errorCode(HttpStatus.BAD_REQUEST.toString()).message("Invalid algorithm. Please choose one of the following: " + validAlgorithms).build();
         log.error("MethodArgumentTypeMismatchException: {}", ex.getMessage());
+
+        ErrorResponse errorResponse;
+        if (ex.getParameter().getParameter().getName().equals("n")) {
+            errorResponse = ErrorResponse.builder().errorCode(HttpStatus.BAD_REQUEST.toString()).message("n must be a number").build();
+        } else if (ex.getParameter().getParameter().getName().equals("algorithm")) {
+            List<String> validAlgorithms = new ArrayList<>();
+            for (PrimeNumberCalculatorType type : PrimeNumberCalculatorType.values()) {
+                validAlgorithms.add(type.toString());
+            }
+            errorResponse = ErrorResponse.builder().errorCode(HttpStatus.BAD_REQUEST.toString()).message("Invalid algorithm. Please choose one of the following: " + validAlgorithms).build();
+        } else {
+            errorResponse = ErrorResponse.builder().errorCode(HttpStatus.BAD_REQUEST.toString()).message("Invalid argument").build();
+        }
+
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 

@@ -30,9 +30,6 @@ public class ControllerTest {
     @MockitoBean
     CalculatorServiceImpl calculatorService;
 
-    @InjectMocks
-    Controller controller;
-
     static Integer n;
     static List<Integer> primes;
     static String algorithm;

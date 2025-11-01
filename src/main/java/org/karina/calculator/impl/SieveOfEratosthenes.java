@@ -16,7 +16,7 @@ public class SieveOfEratosthenes implements PrimeNumberCalculator {
 
         for (int i = 2 ; i < Math.sqrt(n); i++) {
             if (arr[i-2]) {
-                for (int j = (int) Math.pow(i, 2) - 2; j < n-1 ; j+=i) {
+                for (int j = i*i - 2; j < n-1 ; j+=i) {
                     arr[j] = false;
                 }
             }

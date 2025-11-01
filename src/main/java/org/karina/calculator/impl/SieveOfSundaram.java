@@ -18,7 +18,7 @@ public class SieveOfSundaram implements PrimeNumberCalculator {
         Arrays.fill(arr, true);
 
         for (int i = 1; i <= k; i++) {
-            for (int j = i; (i + j + 2*i*j) <= k; j++) {
+            for (int j = i; (i + j + 2*i*j) >= 0 && (i + j + 2*i*j) <= k; j++) {
                 arr[i + j + 2*i*j] = false;
             }
         }

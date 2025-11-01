@@ -6,7 +6,6 @@ import org.karina.factory.CalculatorFactory;
 import org.karina.factory.PrimeNumberCalculatorType;
 import org.springframework.stereotype.Component;
 
-import static org.karina.factory.PrimeNumberCalculatorType.ERATOSTHENES;
 
 @Component
 public class CalculatorFactoryImpl implements CalculatorFactory {

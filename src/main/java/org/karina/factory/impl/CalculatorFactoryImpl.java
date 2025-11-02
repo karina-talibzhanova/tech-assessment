@@ -1,6 +1,7 @@
 package org.karina.factory.impl;
 
 import org.karina.calculator.PrimeNumberCalculator;
+import org.karina.calculator.impl.SieveOfAtkin;
 import org.karina.calculator.impl.SieveOfEratosthenes;
 import org.karina.calculator.impl.SieveOfSundaram;
 import org.karina.factory.CalculatorFactory;
@@ -14,13 +15,13 @@ public class CalculatorFactoryImpl implements CalculatorFactory {
     public PrimeNumberCalculator getCalculator(PrimeNumberCalculatorType algorithm) {
         PrimeNumberCalculator calculator;
         switch (algorithm) {
-            case ERATOSTHENES:
-                calculator = new SieveOfEratosthenes();
-                break;
             case SUNDARAM:
                 calculator = new SieveOfSundaram();
                 break;
-
+            case ATKIN:
+                calculator = new SieveOfAtkin();
+                break;
+            case ERATOSTHENES:
             default:
                 calculator = new SieveOfEratosthenes();
         }

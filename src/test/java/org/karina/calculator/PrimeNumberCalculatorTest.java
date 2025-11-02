@@ -58,6 +58,7 @@ public class PrimeNumberCalculatorTest {
         // get test data
 
         return Stream.of(
+                Arguments.of(2, getPrimes(2)),
                 Arguments.of(10, getPrimes(10)),
                 Arguments.of(79, getPrimes(79)),
                 Arguments.of(20354, getPrimes(20354)),

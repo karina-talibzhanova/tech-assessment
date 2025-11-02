@@ -9,27 +9,29 @@ import java.util.List;
 public class SieveOfSundaram implements PrimeNumberCalculator {
     @Override
     public List<Integer> calculate(int n) {
-        // it works but not for big numbers (thank you integer overflow)
         List<Integer> result = new ArrayList<>();
-
-        int k = (n-1) / 2;
-
-        Boolean[] arr = new Boolean[k+1];
+        int k = (n-3)/2 + 1;
+        Boolean[] arr = new Boolean[k];
         Arrays.fill(arr, true);
 
-        for (int i = 1; i <= k; i++) {
-            for (int j = i; (i + j + 2*i*j) >= 0 && (i + j + 2*i*j) <= k; j++) {
-                arr[i + j + 2*i*j] = false;
+        // honestly a little lost on how this works, refer to https://en.wikipedia.org/wiki/Sieve_of_Sundaram
+        for (int i = 0; i < (Math.sqrt(n) - 3)/2 + 1; i++) {
+            int p = 2*i + 3;
+            int s = (p*p -3) /2;
+            for (int j = s; j < k; j+=p) {
+                arr[j] = false;
             }
         }
 
-        result.add(2);  // 2 is prime, filtered out in above loop
-        for (int x = 1; x <= k; x++) {
-            if (arr[x]) {
-                result.add(2*x + 1);
+        result.add(2);  // 2 is prime, was filtered out above
+
+        for (int i = 0; i < k; i++) {
+            if (arr[i]) {
+                result.add(2*i + 3);
             }
         }
 
         return result;
+
     }
 }

@@ -9,6 +9,9 @@ import java.util.List;
 public class SieveOfSundaram implements PrimeNumberCalculator {
     @Override
     public List<Integer> calculate(int n) {
+        if (n == 2) {
+            return List.of(2);
+        }
         List<Integer> result = new ArrayList<>();
         int k = (n-3)/2 + 1;
         Boolean[] arr = new Boolean[k];

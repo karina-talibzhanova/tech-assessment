@@ -9,6 +9,8 @@ import java.util.List;
 public class SieveOfAtkin implements PrimeNumberCalculator {
     @Override
     public List<Integer> calculate(int n) {
+        // refer to https://en.wikipedia.org/wiki/Sieve_of_Atkin
+
         List<Integer> result = new ArrayList<>();
         Boolean[] arr = new Boolean[n];
         Arrays.fill(arr, false);

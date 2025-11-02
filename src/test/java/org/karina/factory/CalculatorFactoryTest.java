@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.karina.calculator.PrimeNumberCalculator;
+import org.karina.calculator.impl.SieveOfAtkin;
 import org.karina.calculator.impl.SieveOfEratosthenes;
 import org.karina.calculator.impl.SieveOfSundaram;
 import org.karina.factory.impl.CalculatorFactoryImpl;
@@ -28,5 +29,11 @@ public class CalculatorFactoryTest {
     void getSundaramCalculator() {
         PrimeNumberCalculator calculator = calculatorFactory.getCalculator(PrimeNumberCalculatorType.SUNDARAM);
         Assertions.assertInstanceOf(SieveOfSundaram.class, calculator);
+    }
+
+    @Test
+    void getAtkinCalculator() {
+        PrimeNumberCalculator calculator = calculatorFactory.getCalculator(PrimeNumberCalculatorType.ATKIN);
+        Assertions.assertInstanceOf(SieveOfAtkin.class, calculator);
     }
 }
